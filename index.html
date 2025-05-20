@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StudyMaster | Smarter Study. Better Grades.</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="favicon.ico" />
+</head>
+<body>
+  <header>
+    <h1>📘 StudyMaster</h1>
+    <p>Smarter Study. Better Grades.</p>
+  </header>
+
+  <section id="hero">
+    <input type="text" placeholder="Search a topic..." />
+    <div class="subjects">
+      <a href="#">📐 Math</a>
+      <a href="#">🔬 Science</a>
+      <a href="#">📖 History</a>
+      <a href="#">🧘 Religion</a>
+      <a href="#">🧠 Psychology</a>
+    </div>
+  </section>
+
+  <section class="feature">
+    <h2>🔥 Today's Brain Boost</h2>
+    <p id="dailyTip">"Review right before sleep – your brain retains more."</p>
+  </section>
+
+  <section class="tools">
+    <div class="tool">
+      <h3>🃏 Flashcards</h3>
+      <p>Quick review with flip cards for every subject.</p>
+    </div>
+    <div class="tool">
+      <h3>⏳ Countdown</h3>
+      <p>Know how many days left before your exam!</p>
+    </div>
+    <div class="tool">
+      <h3>📝 Practice Quiz</h3>
+      <p>Take a short quiz to test yourself right now.</p>
+    </div>
+    <div class="tool">
+      <h3>🎧 Focus Sounds</h3>
+      <p>Lo-fi, rain, or white noise to help you study better.</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>Made by Rayhan Tchaifa</p>
+    <p>
+      💸 <a href="https://paypal.me/rayhantchaifa" target="_blank">Support on PayPal</a> |
+      🐦 <a href="https://twitter.com/raydevx" target="_blank">@raydevx</a>
+    </p>
+  </footer>
+
+  <script>
+    // Rotate tips
+    const tips = [
+      "Review right before sleep – your brain retains more.",
+      "Teach it to someone – it makes you remember.",
+      "Use colors and diagrams to remember better.",
+      "Study in chunks – 25 min focus, 5 min break.",
+      "Start with the hardest topic first."
+    ];
+    document.getElementById("dailyTip").innerText = tips[Math.floor(Math.random() * tips.length)];
+  </script>
+</body>
+</html>
