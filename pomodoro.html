@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pomodoro | StudyMaster</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body.dark {
+      background: #111;
+      color: #eee;
+    }
+    .dark header, .dark .pomodoro-box, .dark footer {
+      background: #1a1a1a;
+      color: white;
+    }
+    .dark button {
+      background: #374151;
+      color: white;
+    }
+    .toggle-dark {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      background: #e0e7ff;
+      border: none;
+      border-radius: 999px;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .pomodoro-box {
+      max-width: 400px;
+      margin: 3rem auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .pomodoro-box h2 {
+      margin-top: 0;
+      font-size: 2rem;
+    }
+
+    #timer {
+      font-size: 3rem;
+      margin: 1.5rem 0;
+    }
+
+    .pomodoro-box button {
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      margin: 0.5rem;
+      border: none;
+      border-radius: 10px;
+      background: #3b82f6;
+      color: white;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .pomodoro-box button:hover {
+      background: #2563eb;
+    }
+  </style>
+</head>
+<body>
+  <button class="toggle-dark" onclick="toggleDarkMode()">🌓 Dark Mode</button>
+
+  <header>
+    <h1>🍅 Pomodoro Timer</h1>
+    <p>Stay focused. Work smart.</p>
+  </header>
+
+  <div class="pomodoro-box">
+    <h2>25:00</h2>
+    <div id="timer">25:00</div>
+    <button onclick="startTimer()">Start</button>
+    <button onclick="resetTimer()">Reset</button>
+  </div>
+
+  <footer>
+    <p>Made by Rayhan Tchaifa</p>
+    <p>
+      💸 <a href="https://paypal.me/rayhantchaifa" target="_blank">Support on PayPal</a> |
+      🐦 <a href="https://twitter.com/raydevx" target="_blank">@raydevx</a>
+    </p>
+  </footer>
+
+  <script>
+    let isDark = false;
+    function toggleDarkMode() {
+      isDark = !isDark;
+      document.body.classList.toggle("dark", isDark);
+    }
+
+    let time = 25 * 60;
+    let timerInterval;
+
+    function updateDisplay() {
+      const minutes = Math.floor(time / 60);
+      const seconds = time % 60;
+      document.getElementById("timer").innerText =
+        `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+    }
+
+    function startTimer() {
+      if (timerInterval) return;
+      timerInterval = setInterval(() => {
+        if (time > 0) {
+          time--;
+          updateDisplay();
+        } else {
+          clearInterval(timerInterval);
+          timerInterval = null;
+          alert("⏰ Time's up! Take a break.");
+        }
+      }, 1000);
+    }
+
+    function resetTimer() {
+      clearInterval(timerInterval);
+      timerInterval = null;
+      time = 25 * 60;
+      updateDisplay();
+    }
+
+    updateDisplay();
+  </script>
+</body>
+</html>
