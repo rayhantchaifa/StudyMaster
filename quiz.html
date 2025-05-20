@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quiz | StudyMaster</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .quiz-container {
+      max-width: 600px;
+      margin: 2rem auto;
+      background: #ffffff;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+    }
+
+    .quiz-question {
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    .quiz-options {
+      margin-top: 1rem;
+    }
+
+    .quiz-options button {
+      display: block;
+      width: 100%;
+      padding: 0.75rem;
+      margin-bottom: 0.5rem;
+      background: #e0e7ff;
+      color: #1e3a8a;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .quiz-options button:hover {
+      background: #c7d2fe;
+    }
+
+    .result {
+      margin-top: 1.5rem;
+      font-weight: bold;
+      color: #10b981;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🧠 Quick Quiz</h1>
+    <p>Challenge yourself!</p>
+  </header>
+
+  <div class="quiz-container">
+    <div class="quiz-question" id="question">Loading...</div>
+    <div class="quiz-options" id="options"></div>
+    <div class="result" id="result"></div>
+  </div>
+
+  <footer>
+    <p>Made by Rayhan Tchaifa</p>
+    <p>
+      💸 <a href="https://paypal.me/rayhantchaifa" target="_blank">Support on PayPal</a> |
+      🐦 <a href="https://twitter.com/raydevx" target="_blank">@raydevx</a>
+    </p>
+  </footer>
+
+  <script>
+    const quizData = [
+      {
+        question: "What is the capital of France?",
+        options: ["Paris", "London", "Berlin", "Madrid"],
+        answer: "Paris"
+      },
+      {
+        question: "What is H2O?",
+        options: ["Oxygen", "Hydrogen", "Water", "Helium"],
+        answer: "Water"
+      },
+      {
+        question: "5 × 3 = ?",
+        options: ["8", "15", "10", "18"],
+        answer: "15"
+      }
+    ];
+
+    let currentQuestion = 0;
+
+    function loadQuestion() {
+      const q = quizData[currentQuestion];
+      document.getElementById("question").innerText = q.question;
+      const options = document.getElementById("options");
+      options.innerHTML = "";
+      q.options.forEach(option => {
+        const btn = document.createElement("button");
+        btn.innerText = option;
+        btn.onclick = () => checkAnswer(option);
+        options.appendChild(btn);
+      });
+      document.getElementById("result").innerText = "";
+    }
+
+    function checkAnswer(selected) {
+      const correct = quizData[currentQuestion].answer;
+      const result = document.getElementById("result");
+      if (selected === correct) {
+        result.innerText = "✅ Correct!";
+      } else {
+        result.innerText = "❌ Incorrect! Answer: " + correct;
+      }
+      currentQuestion++;
+      if (currentQuestion < quizData.length) {
+        setTimeout(loadQuestion, 1500);
+      } else {
+        setTimeout(() => {
+          document.getElementById("question").innerText = "You finished the quiz!";
+          document.getElementById("options").innerHTML = "";
+        }, 1500);
+      }
+    }
+
+    loadQuestion();
+  </script>
+</body>
+</html>
