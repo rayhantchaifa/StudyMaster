@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flashcards | StudyMaster</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .flashcard-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      padding: 2rem;
+    }
+
+    .flashcard {
+      background: white;
+      width: 200px;
+      height: 150px;
+      perspective: 1000px;
+      cursor: pointer;
+    }
+
+    .flashcard-inner {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      text-align: center;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+    }
+
+    .flashcard:hover .flashcard-inner {
+      transform: rotateY(180deg);
+    }
+
+    .flashcard-front, .flashcard-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: bold;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .flashcard-front {
+      background: #dbeafe;
+      color: #1e3a8a;
+    }
+
+    .flashcard-back {
+      background: #1e3a8a;
+      color: white;
+      transform: rotateY(180deg);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🃏 Flashcards</h1>
+    <p>Test your memory on key topics</p>
+  </header>
+
+  <section class="flashcard-container">
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">What is photosynthesis?</div>
+        <div class="flashcard-back">The process by which plants make food using sunlight.</div>
+      </div>
+    </div>
+
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">Define democracy</div>
+        <div class="flashcard-back">A system where people vote to choose their leaders.</div>
+      </div>
+    </div>
+
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">Area of a triangle</div>
+        <div class="flashcard-back">0.5 × base × height</div>
+      </div>
+    </div>
+
+    <!-- Add more flashcards here -->
+  </section>
+
+  <footer>
+    <p>Made by Rayhan Tchaifa</p>
+    <p>
+      💸 <a href="https://paypal.me/rayhantchaifa" target="_blank">Support on PayPal</a> |
+      🐦 <a href="https://twitter.com/raydevx" target="_blank">@raydevx</a>
+    </p>
+  </footer>
+</body>
+</html>
